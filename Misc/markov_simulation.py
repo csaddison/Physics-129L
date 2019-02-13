@@ -87,24 +87,17 @@ def random_walk(dimension = 2, N = 1000, seed = 224567):
 
 # Setting up figure and running program to generate data
 fig = plt.figure(1)
-ax = fig.add_subplot(111
-#, projection='3d'
-)
+ax = fig.add_subplot(111, projection='3d')
 trials = 50
 N = 75
-dimensions = 2
+dimensions = 3
 seeds = np.random.randint(10000, 999999, trials)
 data = []
 for t in range(trials):
     results = random_walk(dimensions, N, seeds[t])
     data.append(results)
-    ax.plot(results[0], 
-    results[1], 
-    #results[2], 
-    c = 'goldenrod')
-ax.scatter(0,0,
-#0, 
-c = 'magenta')
+    ax.plot(results[0], results[1], results[2], c = 'goldenrod')
+ax.scatter(0, 0, 0, c = 'magenta')
 plt.show()
 
 """ # Histogram of results
