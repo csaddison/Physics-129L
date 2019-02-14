@@ -86,14 +86,35 @@ def random_walk(dimension = 2, N = 1000, seed = 224567):
     return [x_pos, y_pos, z_pos]
 
 # Setting up figure and running program to generate data
-fig = plt.figure(1)
-ax = fig.add_subplot(111
-#, projection='3d'
-)
 trials = 50
 N = 75
-dimensions = 2
-seeds = np.random.randint(10000, 999999, trials)
+dimension = 3
+
+if dimension ==3:
+    fig = plt.figure(1)
+    ax = fig.add_subplot(111, projection='3d')
+else:
+    fig = plt.figure(1)
+    ax = fig.add_subplot(111)
+
+def gather_n_plot(N, dimension, trials, figure):
+    seeds = np.random.randint(10000, 999999, trials)
+    data = []
+    for t in range(trials):
+        results = random_walk(dimension, N, seeds[t])
+        data.append(results)
+        if dimension == 3:
+            figure.plot(results[0], results[1], results[2], c = 'goldenrod')
+        else:
+            figure.plot(results[0], results[1], c = 'goldenrod')
+    figure.scatter(0, 0, 0, c = 'magenta')
+    return [figure, data]
+
+plot = gather_n_plot(N, dimension, trials, ax)
+plt.show()
+
+
+""" seeds = np.random.randint(10000, 999999, trials)
 data = []
 for t in range(trials):
     results = random_walk(dimensions, N, seeds[t])
@@ -102,10 +123,8 @@ for t in range(trials):
     results[1], 
     #results[2], 
     c = 'goldenrod')
-ax.scatter(0,0,
-#0, 
-c = 'magenta')
-plt.show()
+ax.scatter(0, 0, 0, c = 'magenta')
+plt.show() """
 
 """ # Histogram of results
 x_hist = []
