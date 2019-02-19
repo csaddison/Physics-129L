@@ -3,24 +3,23 @@
 # Physics 129L
 #------------------------------------------------------------
 
-# Homework 4, Exercise 1
+# Homework 5, Exercise 3
 
+import math
 import numpy as np
 import matplotlib.pyplot as plt
-import math as m
 from ccHistStuff import statBox
 
 # Loading data
-x = np.load('dataSet.npy')
+txt_file = 'mass.txt'
+bins = 20
+data = np.loadtxt(txt_file)
 
 # Setting up figure
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.set_yscale('log')
-ax.set(title = 'Data set array frequency, semi-log', xlabel = 'Value of x', ylabel = 'Frequency of value, log scale')
-
-# Finishing fig
-ax.hist(x, m.floor(max(x) * 3))
-statBox(ax, x, x)
-plt.savefig('datavis.png')
+ax.hist(data, bins)
+ax.set(title = 'Mass frequency distribution', xlabel = 'Mass', ylabel = 'Frequency of value')
+statBox(ax, data, data)
+plt.savefig('massfreq.png')
 plt.show()

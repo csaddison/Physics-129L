@@ -15,12 +15,12 @@ import ccHistStuff as cc
 
 # Define the arguments
 parser =  argparse.ArgumentParser(description="Generate and plot Poisson variable. Calculate pvalue of observed")
-parser.add_argument('-m','--mean', help='Mean of the Poisson', required=True, type=float)
+parser.add_argument('-m','--mean', help='Mean of the Poisson', required=False, type=float)
 parser.add_argument('-n', '--nev', help='No. to generate. Default=10K', required=False, type=int, default=10000)
 parser.add_argument('-L', '--Low', help='Minimum for plot', required=False, type=int)
 parser.add_argument('-H', '--High', help='Maximum for plot', required=False, type=int)
 parser.add_argument('-s', '--seed', help='Random seed. Default=10', required=False, type=int, default=1)
-parser.add_argument('-o', '--obs',  help='Number of observed events', required=True, type=int)
+parser.add_argument('-o', '--obs',  help='Number of observed events', required=False, type=int)
 
 # This is a dictionary containing the arguments
 args = vars(parser.parse_args())

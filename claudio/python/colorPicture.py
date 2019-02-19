@@ -20,8 +20,8 @@ thisMap = "jet"
 #thisMap ="brg"
 
 # the size of the figure in pixels
-xpix = 500
-ypix = 200
+xpix = 1000
+ypix = 700
 
 # the center of the picture
 xc = int(xpix/2)
@@ -61,8 +61,9 @@ pixColor = 255 * temp / (temp.max())
 newpixColor = np.flipud(pixColor.transpose())
 
 # now the plot
-f1, ax1 = plt.subplots()
-picture = ax1.imshow(newpixColor, interpolation="none", cmap=thisMap)
-ax1.axis("off")   # axis labels off
-f1.show()         # show it on the screen
-input("Press <Enter> to exit")  # we are done
+fig = plt.figure()
+ax = fig.add_subplot(111)
+picture = ax.imshow(newpixColor, interpolation="none", cmap=thisMap)
+ax.axis("off")   # axis labels off
+plt.show()         # show it on the screen
+

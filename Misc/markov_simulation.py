@@ -1,3 +1,6 @@
+#
+# Script that generates and plots numerous trials of random walks using Markov chains in 1, 2, or 3 dimensions
+
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.animation as animate
