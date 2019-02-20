@@ -10,8 +10,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Setting image size and initializing variables
-xsize = 9600
-ysize = 6000
+xsize = 640
+ysize = 400
 x_range = 1.6
 c = -.79 + .56j
 aspect_ratio = xsize / ysize
@@ -41,7 +41,6 @@ for x_i in range(xsize):
             n += 1
         z_0[y_i, x_i] = n
 
-"""
 # Setting up figure
 dpi = 72
 fig = plt.figure(figsize = (xsize / dpi, ysize / dpi))
@@ -49,14 +48,4 @@ ax = fig.add_subplot(111)
 ax.imshow(z_0, cmap = 'afmhot')
 ax.set(title = 'Julia set for c = ' + str(c), xlabel = 'X pixels from -' + str(x_range) + ' to ' + str(x_range), ylabel = 'Y pixels from -' + str(y_range) + ' to ' + str(y_range))
 plt.savefig('juliaset.png')
-plt.show()
-"""
-dpi = 72
-fig = plt.figure(figsize = (xsize / dpi, ysize / dpi))
-ax = fig.add_subplot(111)
-ax.imshow(z_0, cmap = 'afmhot')
-ax.set_title('Julia set for c = ' + str(c), fontsize = 140)
-ax.set_xlabel('X pixels from -' + str(x_range) + ' to ' + str(x_range), fontsize = 80)
-ax.set_ylabel('Y pixels from -' + str(y_range) + ' to ' + str(y_range), fontsize = 80)
-plt.savefig('juliaset_LARGE2.png')
 plt.show()
