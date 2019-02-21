@@ -43,7 +43,7 @@ def julia(plane, c, smooth = False):
                 zmap[y_i, x_i] = n 
             elif smooth == True:
                 # Smoothing subtracts fractional amount from iteration count
-                while abs(z) < 2 and n < 255:
+                while abs(z) <= 2 and n < 255:
                     z_n = f(z, c)
                     z = complex(z_n.real, z_n.imag)
                     n += 1
