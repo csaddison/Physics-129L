@@ -2,28 +2,19 @@
 # 2/17/19
 # ------------------------------------- INTEGRATION.PY -------------------------------------
 """
-A callable module who's main function returns the numeric integral of a 1-dimensional function. Function should be contiuous and finite. Has two methods:
-    .integrate(): returns the numeric approcimation
-    .point_plot(): returns an array of good vs bad points
-
-Both methods take 6 arguments:
-    func    <function>: The function to integrate over
-    xmin    <float>:    Lower bound of integration
-    xmax    <float>:    Upper bound of integration
-    N       <integer>:  Optional, number of points generated
-    seed    <integer>:  Optional, seed for reproducibility
-    *args   <optional>: Optional, arguments that func() needs
-
-If *args for func() are given then func() must expect a touple, ex:
-    f(x, [params])  ---)  integrate(f, ..., param1, param2)
+A callable module who's main function returns the numeric integral of a 1-dimensional function. Function should be contiuous and finite. Has three methods:
+    .integrate():       returns the numeric approcimation
+    .point_plot():      returns an array of good vs bad integration points
+    .differentiate():  returns the numeric derivative of f(x) at a given x
 """
 # Change log:
     # 2/18/19: added support for passing additional *args to function inside integral
-
+    # 2/22/19: added differentiation support
 # ---------------------------------------------------------------------------------------------------------------
 
 import math
 import numpy as np
+
 
 # .integrate module
 def integrate(func, xmin, xmax, N = 1000, seed = 805415, *args):
@@ -74,23 +65,10 @@ def integrate(func, xmin, xmax, N = 1000, seed = 805415, *args):
     return area
 
 
-
-
 # .point_plot module
 def point_plot(function, xmin, xmax, N, seed = 805415, *args):
     """
     Same as .integrate but returns an array whose first element is a list of n succesful points and second is (N - =n) attempted points.
-    
-    Args:
-        func    <function>: The function to integrate over
-        xmin    <float>:    Lower bound of integration
-        xmax    <float>:    Upper bound of integration
-        N       <integer>:  Optional, number of points generated
-        seed    <integer>:  Optional, seed for reproducibility
-        *args   <optional>:   Optional, arguments that func() needs
-        
-    If *args for func() are given then func() must expect a touple, ex:
-        f(x, [params])  ---)  integrate(f, ..., param1, param2)
     """
     # Creating random points for M.C. method
     np.random.seed(seed)
@@ -125,3 +103,13 @@ def point_plot(function, xmin, xmax, N, seed = 805415, *args):
     # Returning array of succesful and unsuccesful points
     points = [succesful, unsuccesful]
     return points
+
+
+# .differentiate module
+def differentiate(func, x, h = .001):
+    """
+    Returns numerical approximation of the function at a given x.
+    """
+    assert h > .0000000001, print("Interval too small")
+    fprime = (func(x + h) - func(x - h)) / (2 * h)
+    return fprime

@@ -1,5 +1,5 @@
-#import math
-#import numpy as np
+import math
+import numpy as np
 import matplotlib.pyplot as plt
 import integration
 import complexplane as z
@@ -33,6 +33,8 @@ ax = fig.add_subplot(111)
 ax.imshow(zmap, cmap = 'winter')
 plt.show()
 """
+
+"""
 c = z.cgen(546734)
 print(c)
 zz = z.createplane(200,200)
@@ -40,3 +42,10 @@ frac = z.julia(zz, c)
 plot = z.fracplot(frac, 'afmhot')
 print(frac[35][35])
 #plt.show()
+"""
+
+def f(x):
+    f = x ** 2
+    return f
+a = integration.differentiate(f, 2, .001)
+print(a)
