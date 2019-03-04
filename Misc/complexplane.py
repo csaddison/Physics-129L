@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 
 # Returns the quadratic julia set for a given c
 def julia(plane, c, smooth = False):
-    # Defining the quadratic julia generating function f(z)
+    # Defining the quadratic julia genelrating function f(z)
     def f(z, c):
         f = z ** 2 + c
         return f

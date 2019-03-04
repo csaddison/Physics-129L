@@ -12,10 +12,10 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import matplotlib.mathtext
 
-# Setting up psi
+# Setting up psi squared
 def psi(n_x, n_y, L, x, y):
     k = math.pi / L
-    psi = sin(n_x * k * x) * sin(n_y * k * y)
+    psi = (sin(n_x * k * x) * sin(n_y * k * y)) ** 2
     return psi
 
 # Generating points to feed into psi
@@ -38,6 +38,6 @@ zz = np.array(z)
 # Setting up the figure
 fig = plt.figure()
 ax = fig.add_subplot(111)
-ax.contourf(xx, yy, zz, cmap = 'seismic')
-ax.set(title = 'P.D.F. for ' + r'$\Psi (x,y)$' + ' [Red = Positive, Blue = Negative]', xlabel = 'x', ylabel = 'y')
+ax.contourf(xx, yy, zz, cmap = 'OrRd')
+ax.set(title = 'P.D.F. for ' + r'$\Psi (x,y)$', xlabel = 'x', ylabel = 'y')
 plt.show()

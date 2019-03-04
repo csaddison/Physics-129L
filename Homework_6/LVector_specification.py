@@ -28,7 +28,7 @@ d = a - b
 # Should be able to multiply a vector by a scalar or multiply
 # two vectors.  In case of two vector*vector multiplication,
 # the sign convention should be x*y = x0*y0 - x1*y1 - x2*y2 - x3*y3
-cc   = 4*a    # scalar*vector gives a vector
+#cc   = 4*a    # scalar*vector gives a vector
 dd   = a*4    # this should be allowed and give same result as previous line
 blah = a*b    # "blah" is a number
 
