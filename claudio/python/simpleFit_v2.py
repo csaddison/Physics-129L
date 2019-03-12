@@ -23,6 +23,7 @@
 #
 # CC 10 Feb 2019
 #----------------------------------
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -133,7 +134,7 @@ a.set_xlim(xmin, xmax)
 xpl = np.linspace(xmin, xmax, 1000)
 ypl = f(xpl, p)
 a.plot(xpl, ypl, color='blue', linestyle='solid')
-fig.show()
+plt.show()
 input('Enter something to continue')
 
 # Now a scan of the chisq
@@ -177,5 +178,5 @@ ax2.plot(p[0], p[1], 'ko')
 ax2.grid()
 
 #show the figure
-fig2.show()
+plt.show()
 input("Press <Enter> to continue") 

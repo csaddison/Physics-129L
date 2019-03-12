@@ -36,5 +36,5 @@ ax.set_xticks(binEdges, minor=True)
 ax.tick_params("both", direction='in', length=7, right=True, which='minor')
 ax.set_xlim(0, 20)
 
-fig.show()
+plt.show()
 input('Enter something to exit: ')

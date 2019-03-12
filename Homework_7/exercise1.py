@@ -9,6 +9,7 @@ import math
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy import optimize
+import ccHistStuff as cc
 
 # Loading data
 txt_file = 'straightTracks.txt'
@@ -49,20 +50,27 @@ for i in range(len(X0)):
     x2_x0.append(X2[i] - X0[i])
     xa_x0.append(Xavg[i] - X0[i])
 
-
 # Adding plot of tracks
-fig = plt.figure()
+fig = plt.figure(figsize = (14,6))
 plot = fig.add_subplot(131)
+fig.subplots_adjust(wspace = .5)
 for n in range(10):
-    plot.plot(data[n][0][0], data[n][0][1], color = '.6')
-    plot.plot(data[n][1][0], data[n][1][1], color = '.6')
-plot.set(title = 'First 10 collisions')
+    plot.plot(data[n][0][1], data[n][1][0], color = '.6', linestyle = '--')
+    plot.plot(data[n][1][1], data[n][1][0], color = '.6', linestyle = '--')
+plot.set(title = 'First 10 collisions', xlabel = r'Sensor $x$ position', ylabel = r'Sensor $y$ position')
 
 # Adding histogram of error
 hist1 = fig.add_subplot(132)
 hist2 = fig.add_subplot(133)
-hist1.hist((x1_x0, x2_x0), 20, stacked = True)
-hist2.hist(xa_x0, 20)
-hist1.set(xlim =  (-.05, .05), title = r'$(x_1/x_2 - x_0 )$')
-hist2.set(xlim =  (-.05, .05), title = r'$x_a - x_0$')
+(n1, bins1, patches1) = hist1.hist((x1_x0, x2_x0), 20, stacked = True)
+(n2, bins2, patches2) = hist2.hist(xa_x0, 20)
+hist1.set(xlim =  (-.05, .05), title = r'$(x_1/x_2 - x_0 )$', xlabel = r'$\Delta x$', ylabel = 'Counts')
+hist2.set(xlim =  (-.05, .05), title = r'$x_a - x_0$', xlabel = r'$\Delta x$', ylabel = 'Counts')
+
+# Adding stat box
+cc.statBox(hist1, x1_x0, bins1)
+cc.statBox(hist2, xa_x0, bins2)
+
+# Saving/showing figure
+#plt.savefig('tracks.png')
 plt.show()

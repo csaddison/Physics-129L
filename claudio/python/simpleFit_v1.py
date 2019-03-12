@@ -67,7 +67,7 @@ for iteration in range(niter):
         print(" ")
         print("-- dy ---")
         print(dy)
-        input("Enter something to continue")
+        #input("Enter something to continue")
                           
     # find the matrix to be inverted, and invert it
     temp  = np.matmul(At, W)       # 2xN * NxN = 2xN
@@ -89,6 +89,7 @@ for iteration in range(niter):
     # the chisq
     chisq = ((y0-y)*(y0-y)/e2).sum()
 
+"""
     # output stuff
     print("   ")
     print("Iteration no. ", iteration)
@@ -97,9 +98,11 @@ for iteration in range(niter):
     print("p[1] = ", p[1])
     print("Covariance:")
     print(temp3)
+"""
 
 # Now plot it
-f, a = plt.subplots()
+f = plt.figure()
+a = f.add_subplot(111)
 xmin = x.min()-1
 xmax = x.max()+0.2
 a.errorbar(x, y, yerr=np.sqrt(e2), linestyle='none', color="red", marker='o')
@@ -109,8 +112,8 @@ ypl = p[0] + p[1]*xpl*xpl
 a.set_xlabel("x")
 a.set_ylabel("y")
 a.plot(xpl, ypl, color='blue', linestyle='solid')
-f.show()
-input('Enter something to continue')
+#plt.show()
+#input('Enter something to continue')
 
 # Now a scan of the chisq
 # We calculate the chisq for various values of p[0] and p[1]
@@ -118,7 +121,8 @@ input('Enter something to continue')
 # elements of the covariance matrix, ie, the square of the errors
 # on p[0] and [p1],
 # We will scan out to 4 sigma
-fig2, ax2 = plt.subplots()
+fig2 = plt.figure()
+ax2 = fig2.add_subplot(111)
 p0min = p[0] - 4*np.sqrt(temp3[0][0])
 p0max = p[0] + 4*np.sqrt(temp3[0][0])
 p1min = p[1] - 4*np.sqrt(temp3[1][1])
@@ -153,5 +157,5 @@ ax2.plot(p[0], p[1], 'ko')
 ax2.grid()
 
 #show the figure
-fig2.show()
-input("Press <Enter> to continue") 
+#plt.show()
+#input("Press <Enter> to continue") 
